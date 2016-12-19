@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<head>
+
+
+</head>
 <style>
 header{padding-top: 50px; font-size: 12px;}
 body{background-color: #eff7ff; padding-left: 100px; padding-right: 100px; font-family: "Arial", Gadget, sans-serif;}
@@ -29,12 +33,12 @@ button{font-family: "Arial", Gadget, sans-serif; font-color: "blue";}
 
 			<br><br>
 
-			<input value="" style="padding-right: 55px;" name="password" id="psd_reg" class="signup" maxlength="20" tabindex="2" 
+			<input value="" style="padding-right: 55px;" type="password" name="password" id="psd_reg" class="signup" maxlength="20" tabindex="2" 
 			placeholder="password"  autocomplete="off" type="text">
 
 			<br><br>
 			
-			<input value="" style="padding-right: 55px;" name="verify password" id="verify_reg" class="signup" maxlength="20" tabindex="2" 
+			<input value="" style="padding-right: 55px;" type="password" name="verify password" id="verify_reg" class="signup" maxlength="20" tabindex="2" 
 			placeholder="verify password"  autocomplete="off" type="text">
 
 			<br><br>
@@ -42,7 +46,9 @@ button{font-family: "Arial", Gadget, sans-serif; font-color: "blue";}
 			<input value="" style="padding-right: 55px;" name="email" id="email_reg" class="signup" maxlength="20" tabindex="2" 
 			placeholder="email"  autocomplete="off" type="text">
 
-			<br>
+			<br><br>
+      <h3 id="status"></h3>
+      <button onclick="createNewAccount()">Sign Up Dawg</button>
 			 
 		</div>
 		
@@ -78,7 +84,7 @@ button{font-family: "Arial", Gadget, sans-serif; font-color: "blue";}
 
 			<br><br>
 
-			<input value="" style="padding-right: 55px;" name="password2" id="psd2_reg" class="login" maxlength="20" tabindex="2" 
+			<input value="" style="padding-right: 55px;" type="password" name="password2" id="psd2_reg" class="login" maxlength="20" tabindex="2" 
 			placeholder="password"  autocomplete="off" type="text">
 		</div>
 		
@@ -94,7 +100,7 @@ button{font-family: "Arial", Gadget, sans-serif; font-color: "blue";}
 		<br><br>
 		
 		<div class = "button" align = "right">
-			<input type="submit" value="LOGIN">
+			<button onclick='logIn()'>Log IN</button>
 		</div>
 	</div>
 
