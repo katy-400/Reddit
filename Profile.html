@@ -8,13 +8,23 @@
 
 <link rel = "stylesheet" href = "https://web.njit.edu/~kn96/IS218/stylesheetProfile.css">
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script text="text/javascript" src="main.js"></script>
 <title>
 User Profile
 </title>
 
 <body>
   <div class="header">
-      <img src= "https://a.thumbs.redditmedia.com/PDQadCzYX_x1bU3KrYuhTptu6eDdOVVagFG6q_Afyb4.jpg" alt="logo">
+    <button onclick="window.location = 'RedditSignup.html';">Log out</button>
+    <br>
+      <img src= "https://a.thumbs.redditmedia.com/PDQadCzYX_x1bU3KrYuhTptu6eDdOVVagFG6q_Afyb4.jpg" id="img" src="#" alt="your image" />
+      <h3>Change profile pic</h3>
+
+<input type='file' id="upload" onChange="readURL(this);"/>
+
+
+
       <h1>NAME</h1>
       <h3>Title</h3>
     </div> 
