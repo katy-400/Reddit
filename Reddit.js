@@ -76,4 +76,5 @@ function logIn(){
   
     ajax.send("request=login"+"&username="+username+"&password="+password1);
 
+  }
 }
