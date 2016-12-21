@@ -86,15 +86,11 @@ if(isset($_POST['request'])){
        session_destroy;
        break;
        
-     
      case "getUsersData" :
        $response = getUsersData($con); 
- 
        $json['userList'] = $response ;
        echo json_encode($json);
-       break;
-       
-                     
+       break;           
   }
 }
 
