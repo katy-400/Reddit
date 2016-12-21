@@ -38,7 +38,6 @@ if(isset($_POST['request'])){
   switch($request){
   
     case "signup" :
-
         //sanitize
         $username = mysqli_real_escape_string($con, $_POST['username']);
         $password1 = mysqli_real_escape_string($con, $_POST['password1']);
@@ -135,6 +134,7 @@ function logIn($username, $password, $con){
     return array("success"=> false, "message"=> "Log in Failed");
   }
 }
+//Factory
 
 function getUsersData($con){//database query to put the new user in the database
   $query = "SELECT * FROM RedditUsers"; //run the query
