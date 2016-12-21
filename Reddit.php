@@ -6,7 +6,7 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-// Credentials
+// Credentials & Singleton
   $hostname = "sql1.njit.edu";
   $username = "kn96";
   $project  = "kn96";
