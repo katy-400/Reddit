@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 
 <style>
-
+#name{
+  color: red;
+}
 </style>
 
 <html>
@@ -18,15 +20,15 @@ User Profile
   <div class="header">
     <button onclick="window.location = 'RedditSignup.html';">Log out</button>
     <br>
-      <img src= "https://a.thumbs.redditmedia.com/PDQadCzYX_x1bU3KrYuhTptu6eDdOVVagFG6q_Afyb4.jpg" id="img" src="#" alt="your image" />
-      <h3>Change profile pic</h3>
+      <h1 id="name"></h1>
+      <img height="300px" src= "https://a.thumbs.redditmedia.com/PDQadCzYX_x1bU3KrYuhTptu6eDdOVVagFG6q_Afyb4.jpg" id="img" src="#" alt="your image" />
+      
+      <h3><i>Change Profile Pic!</i></h3>
+      <input type='file' id="upload" onChange="readURL(this);"/>
+      <div id="userList"></div>
 
-<input type='file' id="upload" onChange="readURL(this);"/>
 
 
-
-      <h1>NAME</h1>
-      <h3>Title</h3>
     </div> 
     <br><br>
   
@@ -37,7 +39,9 @@ User Profile
     <li id="nav-contact"><a href="#">Contact</a></li>
    </ul>
   </div>
-  
+  <script type="text/javascript">
+      getData();
+  </script>
 </body>
 
 </html>

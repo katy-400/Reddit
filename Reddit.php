@@ -20,14 +20,7 @@ if (mysqli_connect_errno())
   {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
   }  
-  ?>
-  
-<?php 
-
-
-
-
-
+ 
 // Connect to Database
   /*
   ($dbh = mysql_connect($hostname, $username, $password))
@@ -35,8 +28,6 @@ if (mysqli_connect_errno())
   print "Successfully connected to MySQL.<br><br>";
   mysql_select_db($project);
   */
-
-
 
   //Check if login, signup, or other with switch case statement
 
@@ -47,14 +38,14 @@ if(isset($_POST['request'])){
   switch($request){
   
     case "signup" :
-      
-        //first sanatize all the user inputted data
+
+        //sanitize
         $username = mysqli_real_escape_string($con, $_POST['username']);
         $password1 = mysqli_real_escape_string($con, $_POST['password1']);
         $password2 = mysqli_real_escape_string($con, $_POST['password2']);
         $email = mysqli_real_escape_string($con, $_POST['email']);
         
-        //call signUp function and see if the success is equal to true
+        //call signUp function
         $response = signUp($username, $password1, $password2, $email, $con);  
         
         //if signUp was successful echo true json back to the client
@@ -109,30 +100,23 @@ if(isset($_POST['request'])){
 
 
 // Signup
-
-
 function signUp($username, $password1, $password2, $email, $con){
   
-  // if one of the elements is missing return false and error message
-  
-  // make sure all the user data needed is there
+  // something missing return false and error message
   if( $username == "" || $password1 == "" || $password2 == "" || $email == ""){
     return array("success"=> false, "message"=> "enter all the elements please");
   }  
-  
+
   //if the passwords are not the same return false ane error message
   if($password1 != $password2){
     return array("success"=> false, "message"=> "passwords are not the same");
   }
   
   //database query to put the new user in the database
-  $query = "INSERT INTO RedditUsers (Username, Password, Email) VALUES ('$username', '$password1', '$email')";
-                          
-                        
- //run the query
+  $query = "INSERT INTO RedditUsers (Username, Password, Email) VALUES ('$username', '$password1', '$email')"; //run the query
   $result = mysqli_query($con, $query);
   
-  //check if the query was successful
+  //check if successful
   if($result){
     return array("success"=> true, "message"=> "Sign Up Completed");
   }else{
@@ -140,28 +124,15 @@ function signUp($username, $password1, $password2, $email, $con){
   }
 }
 
-//login
 function logIn($username, $password, $con){
-  
-  // if one of the elements is missing return false and error message
-  
-  if( $username == "" || $password == ""){
+    
+  if( $username == "" || $password == ""){// error message
     return array("success"=> false, "message"=> "enter all the elements please");
   }  
-  
-
-  //database query to put the new user in the database
   $query = "SELECT ID FROM RedditUsers  where Username = '$username' AND Password=
-  '$password';";
-                          
-                        
-  //run the query
-  $result = mysqli_query($con, $query);
- 
-  
+  '$password';";//run the query
+  $result = mysqli_query($con, $query);  
   $num_rows = mysqli_num_rows($result);
-  
-  //check if the query was successful
   if($num_rows > 0){
     return array("success"=> true, "message"=> "Logged In");
   }else{
@@ -169,26 +140,17 @@ function logIn($username, $password, $con){
   }
 }
 
-
-function getUsersData($con){
-  //database query to put the new user in the database
-  $query = "SELECT * FROM RedditUsers";
-                          
-                        
-  //run the query
+function getUsersData($con){//database query to put the new user in the database
+  $query = "SELECT * FROM RedditUsers"; //run the query
   $result = mysqli_query($con, $query);
  
   while($row = mysqli_fetch_array($result, MYSQL_ASSOC)){
     $id = $row["ID"];
     $name = $row["Username"];
     $email = $row["Email"];
-    
     $userList[] = array("id" => $id, "name" => $name, "email" => $email);
   }
-  
   return $userList;
-  
-
 }
 
 //getUsersData($con);
