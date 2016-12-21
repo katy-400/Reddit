@@ -94,6 +94,15 @@ if(isset($_POST['request'])){
      case "logout" :
        session_destroy;
        break;
+       
+     
+     case "getUsersData" :
+       $response = getUsersData($con); 
+ 
+       $json['userList'] = $response ;
+       echo json_encode($json);
+       break;
+       
                      
   }
 }
@@ -160,6 +169,29 @@ function logIn($username, $password, $con){
   }
 }
 
+
+function getUsersData($con){
+  //database query to put the new user in the database
+  $query = "SELECT * FROM RedditUsers";
+                          
+                        
+  //run the query
+  $result = mysqli_query($con, $query);
+ 
+  while($row = mysqli_fetch_array($result, MYSQL_ASSOC)){
+    $id = $row["ID"];
+    $name = $row["Username"];
+    $email = $row["Email"];
+    
+    $userList[] = array("id" => $id, "name" => $name, "email" => $email);
+  }
+  
+  return $userList;
+  
+
+}
+
+//getUsersData($con);
 
 ?>
 
